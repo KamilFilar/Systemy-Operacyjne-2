@@ -127,6 +127,56 @@ Która funkcja ma mniejszą złożoność obliczeniową fibo2 czy fibo3? Funkcja
 fibo2(n) = 1+1+2+1 + n(1+1+2) + 1 = 6 + 4n
 fibo3(n) = 1+1+1 + n(1+1+2) + 1 = 5 + 4n
 */
+
+// Zadanie 2.4
+// Podaj cztery inne funkcje wyliczające rekurencyjnie wartości ciągu Fibonacciego.
+
+int OtherFIB1(int n){
+    
+    if(n==0){
+        return 1;
+    }
+    if(n==1){
+        return 1;
+    }
+    return OtherFIB1(n-1)+OtherFIB1(n-2);
+}
+
+int OtherFIB2(int n){
+    
+    if(n==0 || n==1){
+        return 1;
+    }
+    return OtherFIB2(n-1)+OtherFIB2(n-2);
+}
+
+int OtherFIB3(int n){
+    
+    switch(n){
+        case 0:
+            return 1;
+        case 1:
+            return 1;
+        default: 
+            return OtherFIB3(n-1)+OtherFIB3(n-2);
+    }
+    
+}
+
+int OtherFIB4(int n){
+    
+    if(n==0){
+        return 1;
+    }
+    else if(n==1){
+        return 1;
+    }
+    else {
+        return OtherFIB4(n-1)+OtherFIB4(n-2);
+    }
+    
+}
+
 void main(){
 
     int n;
@@ -137,4 +187,11 @@ void main(){
     printf("\n\nWynik fibo1(%d) = %d \n", n, fibo1(n));
     printf("Wynik fibo2(%d) = %d \n", n, fibo2(n));
     printf("Wynik fibo3(%d) = %d \n", n, fibo3(n));
+
+    printf("\n-----------------\n");
+
+    printf("\nWynik Funkcji1(%d) = %d \n", n, OtherFIB1(n));
+    printf("Wynik Funkcji2(%d) = %d \n", n, OtherFIB2(n));
+    printf("Wynik Funkcji3(%d) = %d \n", n, OtherFIB3(n));
+    printf("Wynik Funkcji4(%d) = %d \n", n, OtherFIB4(n));
 }

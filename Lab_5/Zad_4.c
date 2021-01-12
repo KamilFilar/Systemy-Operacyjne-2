@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+#include <unistd.h>
 
 // Zadanie 4.1
 // Funkcja printHex wypisuje plik w postaci dwucyfrowych liczb szesnastkowych.
@@ -18,9 +20,15 @@ void printHex(FILE *file){
 // Funkcja printLinesHex wypisuje plik linia po linii analogicznie do printHex.
 void printLinesHex(FILE *file){
 
-    char ch;
-    while((ch = getc(file)) != EOF){
-        printf("%.2x ",ch);
+    char c;
+
+    while((c=getc(file))!=EOF){
+        if(c=='\n'){
+            printf("%.2x \n", c);
+        }
+        else{
+            printf("%.2x ", c);
+        }
     }
 }
 
